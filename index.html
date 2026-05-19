@@ -122,7 +122,7 @@ tailwind.config = {
 <main class="pt-20">
 
   <!-- Hero -->
-  <section class="relative h-[700px] w-full overflow-hidden border-b border-outline-variant/20 bg-surface-container-lowest" id="about">
+  <section class="relative min-h-[700px] w-full overflow-hidden border-b border-outline-variant/20 bg-surface-container-lowest" id="about">
     <!-- SVG paths only — no nodes inside -->
     <div class="absolute inset-0 z-0 node-canvas" id="canvas-container">
       <svg class="absolute inset-0 w-full h-full pointer-events-none" id="connection-svg">
@@ -134,25 +134,25 @@ tailwind.config = {
     </div>
 
     <!-- Nodes at z-30, direct children of section -->
-    <div class="node-element reveal delay-1 absolute z-30 bg-white border border-outline-variant p-3 rounded shadow-sm" id="node-gcp" style="left:5%;top:13%;">
+    <div class="node-element reveal delay-1 absolute z-30 hidden md:block bg-white border border-outline-variant p-3 rounded shadow-sm" id="node-gcp" style="left:5%;top:13%;">
       <div class="flex items-center gap-2">
         <span class="material-symbols-outlined text-primary">cloud</span>
         <span class="font-label-mono text-label-mono">GCP Infrastructure</span>
       </div>
     </div>
-    <div class="node-element reveal delay-2 absolute z-30 bg-white border border-outline-variant p-3 rounded shadow-sm" id="node-k8s" style="left:50%;top:5%;">
+    <div class="node-element reveal delay-2 absolute z-30 hidden md:block bg-white border border-outline-variant p-3 rounded shadow-sm" id="node-k8s" style="left:50%;top:5%;">
       <div class="flex items-center gap-2">
         <span class="material-symbols-outlined text-primary">grid_view</span>
         <span class="font-label-mono text-label-mono">K8s Orchestration</span>
       </div>
     </div>
-    <div class="node-element reveal delay-3 absolute z-30 bg-white border border-outline-variant p-3 rounded shadow-sm" id="node-cicd" style="left:78%;top:18%;">
+    <div class="node-element reveal delay-3 absolute z-30 hidden md:block bg-white border border-outline-variant p-3 rounded shadow-sm" id="node-cicd" style="left:78%;top:18%;">
       <div class="flex items-center gap-2">
         <span class="material-symbols-outlined text-primary">sync_alt</span>
         <span class="font-label-mono text-label-mono">CI/CD Pipeline</span>
       </div>
     </div>
-    <div class="node-element reveal delay-4 absolute z-30 bg-white border border-secondary p-3 rounded shadow-sm" id="node-nlp" style="left:70%;top:76%;">
+    <div class="node-element reveal delay-4 absolute z-30 hidden md:block bg-white border border-secondary p-3 rounded shadow-sm" id="node-nlp" style="left:70%;top:76%;">
       <div class="flex items-center gap-2">
         <span class="material-symbols-outlined text-secondary">psychology</span>
         <span class="font-label-mono text-label-mono">NLP &amp; RAG Systems</span>
@@ -161,7 +161,7 @@ tailwind.config = {
 
     <!-- Hero card -->
     <div class="relative z-20 pointer-events-none max-w-container-max mx-auto px-gutter h-full flex flex-col justify-center">
-      <div class="max-w-2xl bg-white/40 backdrop-blur-md p-8 rounded-xl border border-white/50 shadow-xl pointer-events-auto reveal active">
+      <div class="max-w-2xl bg-white/40 backdrop-blur-md p-5 md:p-8 rounded-xl border border-white/50 shadow-xl pointer-events-auto reveal active">
         <div class="flex items-center gap-4 mb-6">
           <div class="relative">
             <div class="w-20 h-20 rounded-full bg-surface-container border-2 border-primary overflow-hidden">
@@ -178,9 +178,9 @@ tailwind.config = {
             </div>
           </div>
         </div>
-        <h1 class="font-display text-display text-primary mb-4">Engineering Resilient Intelligence.</h1>
-        <p class="font-body-lg text-body-lg text-on-surface-variant mb-8">NLP engineer turned DevOps/MLOps specialist — building AI systems end-to-end from language models to production infrastructure.</p>
-        <div class="grid grid-cols-3 gap-4 mb-8">
+        <h1 class="font-display text-headline-lg-mobile md:text-display text-primary mb-3 md:mb-4">Engineering Resilient Intelligence.</h1>
+        <p class="font-body-md md:text-body-lg text-on-surface-variant mb-5 md:mb-8">NLP engineer turned DevOps/MLOps specialist — building AI systems end-to-end from language models to production infrastructure.</p>
+        <div class="grid grid-cols-3 gap-2 md:gap-4 mb-5 md:mb-8">
           <div class="border-l-2 border-primary pl-3">
             <div class="font-display text-headline-md text-primary">110/110</div>
             <div class="font-label-mono text-caption text-on-surface-variant uppercase">MSc, Cum Laude</div>
@@ -553,7 +553,7 @@ tailwind.config = {
     const ty = rect.height * 0.5;
     ['gcp','k8s','cicd','nlp'].forEach(id => {
       const el = document.getElementById('node-' + id);
-      if (!el) return;
+      if (!el || el.offsetParent === null) return;
       const r = el.getBoundingClientRect();
       const px = r.left - rect.left + r.width / 2;
       const py = r.top - rect.top + r.height / 2;
