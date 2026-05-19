@@ -97,6 +97,9 @@ tailwind.config = {
   .skill-row i { font-size:1.1rem; line-height:1; }
   .skill-row .badge { width:20px; height:20px; border-radius:4px; background:#c4c6d1; color:#44474f; font-size:8px; font-weight:800; display:flex; align-items:center; justify-content:center; text-transform:uppercase; flex-shrink:0; }
   .skill-row-label { font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:500; color:#1b1c19; }
+  @media (max-width: 767px) {
+    .blueprint-bg { background-image: radial-gradient(circle, rgba(196,198,209,0.35) 1px, transparent 1px); background-size: 28px 28px; }
+  }
   @media (prefers-reduced-motion: reduce) {
     .line-flow,.status-pulse,.project-pod,.shimmer::after,.reveal { animation:none!important; transition:none!important; transform:none!important; opacity:1!important; }
   }
@@ -122,7 +125,7 @@ tailwind.config = {
 <main class="pt-20">
 
   <!-- Hero -->
-  <section class="relative min-h-[700px] w-full overflow-hidden border-b border-outline-variant/20 bg-surface-container-lowest" id="about">
+  <section class="relative py-16 md:py-0 md:h-[700px] w-full overflow-hidden border-b border-outline-variant/20 bg-surface-container-lowest" id="about">
     <!-- SVG paths only — no nodes inside -->
     <div class="absolute inset-0 z-0 node-canvas" id="canvas-container">
       <svg class="absolute inset-0 w-full h-full pointer-events-none" id="connection-svg">
@@ -178,20 +181,35 @@ tailwind.config = {
             </div>
           </div>
         </div>
+        <!-- Mobile node pills — replaces floating graph nodes on small screens -->
+        <div class="flex flex-wrap gap-1.5 mb-4 md:hidden">
+          <span class="inline-flex items-center gap-1 px-2.5 py-1 bg-white/70 border border-primary/25 rounded-full font-label-mono text-[10px] text-primary">
+            <span class="material-symbols-outlined" style="font-size:11px;">cloud</span>GCP Infra
+          </span>
+          <span class="inline-flex items-center gap-1 px-2.5 py-1 bg-white/70 border border-primary/25 rounded-full font-label-mono text-[10px] text-primary">
+            <span class="material-symbols-outlined" style="font-size:11px;">grid_view</span>Kubernetes
+          </span>
+          <span class="inline-flex items-center gap-1 px-2.5 py-1 bg-white/70 border border-primary/25 rounded-full font-label-mono text-[10px] text-primary">
+            <span class="material-symbols-outlined" style="font-size:11px;">sync_alt</span>CI/CD
+          </span>
+          <span class="inline-flex items-center gap-1 px-2.5 py-1 bg-white/70 border border-secondary/25 rounded-full font-label-mono text-[10px] text-secondary">
+            <span class="material-symbols-outlined" style="font-size:11px;">psychology</span>NLP &amp; RAG
+          </span>
+        </div>
         <h1 class="font-display text-headline-lg-mobile md:text-display text-primary mb-3 md:mb-4">Engineering Resilient Intelligence.</h1>
         <p class="font-body-md md:text-body-lg text-on-surface-variant mb-5 md:mb-8">NLP engineer turned DevOps/MLOps specialist — building AI systems end-to-end from language models to production infrastructure.</p>
         <div class="grid grid-cols-3 gap-2 md:gap-4 mb-5 md:mb-8">
-          <div class="border-l-2 border-primary pl-3">
-            <div class="font-display text-headline-md text-primary">110/110</div>
-            <div class="font-label-mono text-caption text-on-surface-variant uppercase">MSc, Cum Laude</div>
+          <div class="border-l-2 border-primary pl-2 md:pl-3">
+            <div class="font-display text-sm md:text-headline-md text-primary">110/110</div>
+            <div class="font-label-mono text-[9px] md:text-caption text-on-surface-variant uppercase">MSc, Cum Laude</div>
           </div>
-          <div class="border-l-2 border-secondary pl-3">
-            <div class="font-display text-headline-md text-primary">NLP→DevOps</div>
-            <div class="font-label-mono text-caption text-on-surface-variant uppercase">Career </div>
+          <div class="border-l-2 border-secondary pl-2 md:pl-3">
+            <div class="font-display text-sm md:text-headline-md text-primary">NLP→Ops</div>
+            <div class="font-label-mono text-[9px] md:text-caption text-on-surface-variant uppercase">Career</div>
           </div>
-          <div class="border-l-2 border-primary-container pl-3">
-            <div class="font-display text-headline-md text-primary">IT/EN/FR</div>
-            <div class="font-label-mono text-caption text-on-surface-variant uppercase">Languages</div>
+          <div class="border-l-2 border-primary-container pl-2 md:pl-3">
+            <div class="font-display text-sm md:text-headline-md text-primary">IT/EN/FR</div>
+            <div class="font-label-mono text-[9px] md:text-caption text-on-surface-variant uppercase">Languages</div>
           </div>
         </div>
         <!-- Contact links inside hero -->
